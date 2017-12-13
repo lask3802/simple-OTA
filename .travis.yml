@@ -10,6 +10,7 @@ go:
   - 1.9
   - master
 
+go_import_path: lask3802/simple-OTA/
 # Skip the install step. Don't `go get` dependencies. Only build with the
 # code in vendor/
 install: true
