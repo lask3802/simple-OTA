@@ -1,7 +1,10 @@
-package folder
+package ota
 
 import (
+	"fmt"
+	"log"
 	"os"
+	"path/filepath"
 	"testing"
 	"time"
 )
@@ -62,4 +65,33 @@ func TestRecent(t *testing.T) {
 	if len(result) != 3 {
 		t.Error("Wrong file info count")
 	}
+}
+
+func TestGetLink(t *testing.T) {
+	dir, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(dir)
+	targetDir := "../public"
+	fullpath, err := filepath.Abs(targetDir)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	folders := Recent(fullpath, 0, 10)
+	m := make(map[string]string)
+	for _, d := range folders {
+		apk, err := FindAPK(filepath.Join(targetDir, d.Name()))
+		if err != nil {
+			ipa, err := FindIPA(filepath.Join(targetDir, d.Name()))
+			if err != nil {
+				log.Fatal(err)
+			}
+			m[d.Name()] = ipa
+			continue
+		}
+		m[d.Name()] = apk
+	}
+	fmt.Print(m)
 }
