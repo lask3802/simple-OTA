@@ -86,7 +86,7 @@ func TestGetLink(t *testing.T) {
 		if err != nil {
 			ipa, err := FindIPA(filepath.Join(targetDir, d.Name()))
 			if err != nil {
-				log.Fatal(err)
+				t.Error(err)
 			}
 			m[d.Name()] = ipa
 			continue

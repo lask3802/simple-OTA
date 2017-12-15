@@ -48,7 +48,7 @@ func FindAPK(dir string) (string, error) {
 }
 
 func FindIPA(dir string) (string, error) {
-	return FindPattern(dir, "*.ipa")
+	return FindPattern(dir, "manifest.plist")
 }
 
 func FindPattern(dir string, pattern string) (string, error) {

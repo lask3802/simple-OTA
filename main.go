@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"lask3802/simple-OTA/ota"
 	"net/http"
+	"sort"
 )
 
 /*
@@ -20,9 +21,11 @@ func main() {
 	r := gin.Default()
 	r.LoadHTMLGlob("template/*")
 	r.StaticFS("/public", http.Dir("public"))
+	r.Static("/static", "./static")
 	r.GET("/", func(c *gin.Context) {
 		blocks := ota.FindCommits("public/", 0, 10)
-		c.HTML(http.StatusOK, "index.html", blocks)
+		sort.Sort(blocks)
+		c.HTML(http.StatusOK, "tables.html", blocks)
 	})
 	r.Run(":8080")
 }
