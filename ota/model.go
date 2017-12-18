@@ -48,7 +48,14 @@ func FindCommits(targetDir string, start int, count int) CommitBlocks {
 
 	folders := Recent(fullPath, start, count)
 	result := make([]CommitBlock, len(folders))
-	for idx, d := range folders {
+	available := 0
+	for _, d := range folders {
+		env, err := Env(targetDir, d)
+		if err != nil{
+			log.Println(err)
+			continue
+		}
+
 		apk, err := FindAPK(filepath.Join(targetDir, d.Name()))
 		if err != nil {
 			log.Println(err)
@@ -58,14 +65,12 @@ func FindCommits(targetDir string, start int, count int) CommitBlocks {
 			log.Println(err)
 		}
 
-		env, err := Env(targetDir, d)
-
 		time, err := time.Parse(time.UnixDate, env["BUILD_TIME"])
 		if err != nil {
 			log.Println(err)
 		}
 
-		result[idx] = CommitBlock{
+		result[available] = CommitBlock{
 			IPALink:     strings.Replace(ipa, "\\", "/", -1),
 			APKUrl:      strings.Replace(apk, "\\", "/", -1),
 			Commit:      env["CI_COMMIT_SHA"],
@@ -75,8 +80,9 @@ func FindCommits(targetDir string, start int, count int) CommitBlocks {
 			Message:     env["BUILD_MESSAGE"],
 			UnixTime: time.Unix(),
 		}
+		available++
 	}
-	return result
+	return result[:available]
 }
 func Env(targetDir string, d os.FileInfo) (map[string]string, error) {
 	cienv, err := ioutil.ReadFile(filepath.Join(targetDir, d.Name(), "ci.json"))
