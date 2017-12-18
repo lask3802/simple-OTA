@@ -27,5 +27,5 @@ func main() {
 		sort.Sort(blocks)
 		c.HTML(http.StatusOK, "tables.html", blocks)
 	})
-	r.RunTLS("archieve.server.nox:443", "crt/server.crt", "crt/server.key")
+	r.RunTLS("127.0.0.1:443", "crt/server.crt", "crt/server.key")
 }
