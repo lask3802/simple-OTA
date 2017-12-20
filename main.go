@@ -25,7 +25,7 @@ func main() {
 	r.Static("/static", "./static")
 	r.GET("/", func(c *gin.Context) {
 
-		blocks := ota.FindCommits("public/", 0, 10)
+		blocks := ota.FindCommits("public/", 0, 5000)
 		for idx := range blocks{
 			blocks[idx].IPALink = template.URL("https://"+c.Request.Host+"/"+string(blocks[idx].IPALink))
 		}
