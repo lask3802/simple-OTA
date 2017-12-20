@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Unity-iPhone.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>A131EAF3DDCD103A02A277064094D3E361E9B870</string>
+				<key>dateExpires</key>
+				<string>06/12/2018</string>
+				<key>type</key>
+				<string>iOS Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>2YEP85397R.com.Noxygames.Lanota</string>
+				<key>aps-environment</key>
+				<string>production</string>
+				<key>com.apple.developer.icloud-container-identifiers</key>
+				<array>
+					<string>iCloud.com.Noxygames.Lanota</string>
+				</array>
+				<key>com.apple.developer.icloud-services</key>
+				<array>
+					<string>CloudKit</string>
+				</array>
+				<key>com.apple.developer.team-identifier</key>
+				<string>2YEP85397R</string>
+				<key>com.apple.developer.ubiquity-kvstore-identifier</key>
+				<string>2YEP85397R.com.Noxygames.Lanota</string>
+				<key>get-task-allow</key>
+				<false/>
+			</dict>
+			<key>name</key>
+			<string>Lanota.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>b543ae93-d288-4af0-aafa-e0b68cbe25b4</string>
+				<key>name</key>
+				<string>iOS Team Ad Hoc Provisioning Profile: com.Noxygames.Lanota</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>2YEP85397R</string>
+				<key>name</key>
+				<string></string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

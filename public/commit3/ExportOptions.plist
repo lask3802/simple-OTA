@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>compileBitcode</key>
+	<false/>
+	<key>iCloudContainerEnvironment</key>
+	<string>Development</string>
+	<key>manifest</key>
+	<dict>
+		<key>appURL</key>
+		<string>https://archieve.server.noxy/public/f9399fdc4eef15ffc5684ae6c1da68c745ef97a6/Unity-iPhone.ipa</string>
+		<key>displayImageURL</key>
+		<string>http://www.example.com/57x57.png</string>
+		<key>fullSizeImageURL</key>
+		<string>http://www.example.com/120x120.jpg</string>
+	</dict>
+	<key>method</key>
+	<string>ad-hoc</string>
+	<key>signingStyle</key>
+	<string>automatic</string>
+	<key>stripSwiftSymbols</key>
+	<true/>
+	<key>teamID</key>
+	<string>2YEP85397R</string>
+	<key>thinning</key>
+	<string>&lt;none&gt;</string>
+</dict>
+</plist>

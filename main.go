@@ -6,6 +6,7 @@ import (
 	"lask3802/simple-OTA/ota"
 	"net/http"
 	"sort"
+	"html/template"
 )
 
 /*
@@ -23,9 +24,13 @@ func main() {
 	r.StaticFS("/public", http.Dir("public"))
 	r.Static("/static", "./static")
 	r.GET("/", func(c *gin.Context) {
+
 		blocks := ota.FindCommits("public/", 0, 10)
+		for idx := range blocks{
+			blocks[idx].IPALink = template.URL("https://"+c.Request.Host+"/"+string(blocks[idx].IPALink))
+		}
 		sort.Sort(blocks)
 		c.HTML(http.StatusOK, "tables.html", blocks)
 	})
-	r.RunTLS("archieve.server.nox:443", "crt/server.crt", "crt/server.key")
+	r.RunTLS(":443", "crt/server.crt", "crt/server.key")
 }

@@ -9,10 +9,11 @@ import (
 	"io/ioutil"
 	"time"
 	"os"
+	"html/template"
 )
 
 type CommitBlock struct {
-	IPALink     string
+	IPALink     template.URL
 	APKUrl      string
 	Message     string
 	ProjectName string
@@ -69,9 +70,9 @@ func FindCommits(targetDir string, start int, count int) CommitBlocks {
 		if err != nil {
 			log.Println(err)
 		}
-
+		ipaLink := strings.Replace(ipa, "\\", "/", -1)
 		result[available] = CommitBlock{
-			IPALink:     strings.Replace(ipa, "\\", "/", -1),
+			IPALink:     template.URL(ipaLink),
 			APKUrl:      strings.Replace(apk, "\\", "/", -1),
 			Commit:      env["CI_COMMIT_SHA"],
 			Time:        humanize.Time(time),

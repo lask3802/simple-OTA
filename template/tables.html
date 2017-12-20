@@ -19,6 +19,7 @@
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<script src="../static/vendor/jquery/jquery.min.js"></script>
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Start Bootstrap</a>
@@ -163,7 +164,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                    <td hidden>UnixTime</td>
+                    <th data-sortable="true" data-visible="false">UnixTime</th>
                   <th>Project</th>
                   <th>Branch</th>
                   <th>Message</th>
@@ -175,7 +176,7 @@
               </thead>
               <tfoot>
                 <tr>
-                    <td hidden>UnixTime</td>
+                    <th  data-sortable="true" data-visible="false">UnixTime</th>
                     <th>Project</th>
                     <th>Branch</th>
                     <th>Message</th>
@@ -189,11 +190,14 @@
 {{with .}}
 {{range .}}
                 <tr>
-                    <td hidden>{{.UnixTime}}</td>
-                    <td>{{.ProjectName}}</td>
+                    <td>{{.UnixTime}}</td>
+                    <td><a target="_blank" href="http://gitlab.server.noxy/{{.ProjectName}}">{{.ProjectName}}</a></td>
                   <td>{{.Branch}}</td>
                   <td>{{.Message}}</td>
-                    <td> <a href="public/{{.Commit}}">{{.Commit}}</a></td>
+                    <td>
+                        <a href="http://gitlab.server.noxy/{{.ProjectName}}/commit/{{.Commit}}">{{.Commit}}</a>
+                        <a href="public/{{.Commit}}"><img src="/static/icon-folder.png" height="50" width="50"/></a>
+                    </td>
                   <td>{{.Time}}</td>
                     <td>
                         {{if .APKUrl}}
@@ -202,7 +206,7 @@
                         </td>
                   <td>
                       {{if .IPALink}}
-                      <a href="itms-services://?action=download-manifest&url={{.IPALink}}"><img src="/static/ios_dl.png" height="50" width="50"/></a>
+                      <a href="itms-services://?action=download-manifest&url={{.IPALink }}"><img src="/static/ios_dl.png" height="50" width="50"/></a>
                       {{end}}
                       </td>
                 </tr>
@@ -256,7 +260,7 @@
       </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="../static/vendor/jquery/jquery.min.js"></script>
+
     <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
