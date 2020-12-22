@@ -1,0 +1,14 @@
+[ req ]
+default_bits        = 2048
+distinguished_name  = req_distinguished_name
+req_extensions      = SAN
+extensions          = SAN
+[ req_distinguished_name ]
+countryName         = Taiwan
+stateOrProvinceName = Taiwan
+localityName        = Taipei
+organizationName    = Noxy games Inc.
+[SAN]
+subjectAltName      = DNS:archieve.server.noxy
+extendedKeyUsage    = serverAuth
+basicConstraints    = CA:TRUE,pathlen:0
