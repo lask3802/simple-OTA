@@ -1,11 +1,11 @@
 # build stage
-FROM golang:1.9.2-alpine3.7 AS build-env
+FROM golang:1.16.4-alpine3.13 AS build-env
 ADD . /go/src/lask3802/simple-OTA
 WORKDIR /go/src/lask3802/simple-OTA
 RUN cd /go/src/lask3802/simple-OTA && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o app
 
 # final stage
-FROM centurylink/ca-certs
+FROM scratch
 VOLUME /public
 COPY --from=build-env /go/src/lask3802/simple-OTA/app /
 COPY --from=build-env /go/src/lask3802/simple-OTA/crt /crt
