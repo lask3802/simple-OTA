@@ -11,8 +11,7 @@ require (
 	github.com/mattn/go-isatty v0.0.4-0.20170925054904-a5cdd64afdee // indirect
 	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/ugorji/go v0.0.0-20170826155943-8c0409fcbb70 // indirect
-	golang.org/x/net v0.0.0-20210510120150-4163338589ed // indirect
-	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
+	golang.org/x/net v0.7.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v8 v8.18.2 // indirect
